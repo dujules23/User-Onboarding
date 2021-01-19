@@ -1,3 +1,6 @@
+//Imported React
+import React, { useState } from 'react'
+
 //Axios import
 import axios from 'axios'
 
@@ -11,8 +14,19 @@ import Form from './Form'
 
 
 function App() {
+  //Slice of State
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password:'',
+    terms: false,
+  })
+
+
   return (
+
     <div className="App">
+      <h1>Onboarding</h1>
       <Form/>
     </div>
   );
