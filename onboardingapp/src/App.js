@@ -63,7 +63,11 @@ function App() {
   return (
 
     <div className="App">
+      
       <h1>Onboarding</h1>
+      <br/>
+      <div>{errors.name}</div><div>{errors.email}</div><div>{errors.password}</div><div>{errors.terms}</div>
+      <br/>
       <Form
         form={form}
         setForm={setForm}
