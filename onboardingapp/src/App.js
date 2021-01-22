@@ -1,8 +1,7 @@
 //Imported React
 import React, { useState, useEffect } from 'react'
 
-//Axios import
-import axios from 'axios'
+
 
 //yup import
 import * as yup from 'yup'
@@ -45,8 +44,12 @@ function App() {
   //Slice of state for Button (disabled until all fields of the form have been completed)
   const [disabled, setDisabled] = useState(true)
   
-  // console.log(disabled)
+  //Slice of state to render new users to the page
 
+  const [users, setUsers] = useState([])
+
+
+  //function that validates errors based on the schema
   const validate = (name, value) => {
 
     yup.reach(schema, name)
@@ -66,16 +69,21 @@ function App() {
       
       <h1>Onboarding</h1>
       <br/>
-      <div>{errors.name}</div><div>{errors.email}</div><div>{errors.password}</div><div>{errors.terms}</div>
+      <div style={{color: 'red'}}>
+        <div>{errors.name}</div><div>{errors.email}</div><div>{errors.password}</div><div>{errors.terms}</div>
+      </div>
       <br/>
       <Form
         form={form}
         setForm={setForm}
         disabled={disabled}
         setErrors={validate}
+        users={users}
+        setUsers={setUsers}/>
 
-
-      />
+      <div>
+        <div>{form.newUser}</div>
+      </div>  
     </div>
   );
 }

@@ -1,13 +1,14 @@
 //React import
 import React from 'react'
 
+import axios from 'axios'
 
 
 export default function Form (props) {
 
     
 
-    const { form, setForm, setErrors, disabled } = props
+    const { form, setForm, setErrors, disabled, users, setUsers } = props
 
     // console.log (values)
 
@@ -23,20 +24,35 @@ export default function Form (props) {
         setForm({...form, [name]: valueToUse})
         
         //
-        setErrors(name,valueToUse)
+        setErrors(name, valueToUse)
         
     }
    
+    //  Submit function that creats a new user then sends that data to the backend
+    const submit = e => {
 
-    // const submit = e => {
+        e.preventDefault();
+        const newUser ={ name: form.name.trim(), email: form.email, password: form.password, terms: form.terms }
+        axios.post('https://reqres.in/api/users', newUser)
+            .then((res) =>{
+                setUsers([...users, newUser])    
+                setForm({
+                    name: '',
+                    email: '',
+                    password:'',
+                    terms: false,
+                   })
+            })
+            .catch((err) => {
+                
+            })
 
-
-    // }
+    }
 
 
     return(
 
-        <form className="form-container">
+        <form onSubmit={submit}>
             <label>Name:
                 <input
                     name='name'
