@@ -4,7 +4,8 @@ import React from 'react'
 //importing axios
 import axios from 'axios'
 
-
+import { Button } from "reactstrap"
+import{ Card } from 'reactstrap'
 export default function Form (props) {
 
     
@@ -60,7 +61,7 @@ export default function Form (props) {
 
 
     return(
-
+        <Card>
         <form onSubmit={submit}>
             <label>Name:
                 <input
@@ -104,8 +105,9 @@ export default function Form (props) {
                 />
             </label>
             <br/>
-            <button disabled={disabled} >Submit</button>
+            <Button outline color="red" size="lg" disabled={disabled} >Submit</Button>
         </form>
+        </Card>
     )
     
 }

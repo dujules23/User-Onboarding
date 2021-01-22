@@ -10,6 +10,30 @@ import * as yup from 'yup'
 import Form from './Form'
 
 
+///***Stretch Items***///
+//import card
+
+import {
+  Card, CardText, CardBody, CardLink,
+  CardTitle, Col, Row
+} from 'reactstrap';
+
+import  styled  from 'styled-components'
+
+
+//styles
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: #006370;
+`;
+
+const TWrapper =styled.section`
+  color: #53ADAC
+`
+
+
  //Schema - shape of the form
  const schema = yup.object().shape({
 
@@ -68,8 +92,9 @@ function App() {
   return (
 
     <div className="App">
-      
-      <h1>Onboarding</h1>
+      <TWrapper>
+        <Title>Onboarding</Title>
+      </TWrapper>
       <br/>
       <div style={{color: 'red'}}>
         <div>{errors.name}</div><div>{errors.email}</div><div>{errors.password}</div><div>{errors.terms}</div>
@@ -89,13 +114,22 @@ function App() {
         users.map( user => {
           console.log(user)
           return  (
-            <div>
-              <h2>Team Member</h2>
-              <div>Name:{user.name}</div>
-              <div>Email:{user.email}</div>
-              <div>Password:{user.password ? "Correct" : " Not Submitted"}</div>
-              <div>TOS:{user.terms ? 'Terms have been read': 'not read'}</div>
+          <div>
+            <Card body color="success">
+              
+              <Col sm="6">
+                <CardBody>
+                  <CardTitle tag="h2">Team Member</CardTitle>
+                    <CardText>Name:{user.name}</CardText>
+                    <CardText>Email:{user.email}</CardText>
+                    <CardText>Password:{user.password ? "Correct" : "Not Submitted"}</CardText>
+                    <CardText>TOS:{user.terms ? 'Terms have been read': 'not read'}</CardText>
+                </CardBody>
+              </Col>
+              
+            </Card>
             </div>
+          
             )
         })
         }     
