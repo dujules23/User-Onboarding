@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 
 
-//yup import
+//yup import for setting up schema
 import * as yup from 'yup'
 
 //imporing form.js
@@ -48,6 +48,8 @@ function App() {
 
   const [users, setUsers] = useState([])
 
+  
+
 
   //function that validates errors based on the schema
   const validate = (name, value) => {
@@ -79,10 +81,24 @@ function App() {
         disabled={disabled}
         setErrors={validate}
         users={users}
-        setUsers={setUsers}/>
-
+        setUsers={setUsers}
+        />
+      <br/>
       <div>
-        <div>{form.newUser}</div>
+        {
+        users.map( user => {
+          console.log(user)
+          return  (
+            <div>
+              <h2>Team Member</h2>
+              <div>Name:{user.name}</div>
+              <div>Email:{user.email}</div>
+              <div>Password:{user.password ? "Correct" : " Not Submitted"}</div>
+              <div>TOS:{user.terms ? 'Terms have been read': 'not read'}</div>
+            </div>
+            )
+        })
+        }     
       </div>  
     </div>
   );

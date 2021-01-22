@@ -50,6 +50,7 @@ describe('Functionality Test', () => {
         submitButton().should('exist')
     })
 
+    
     it('Form Validation', () => {
         emailInput().type(email)
         emailInput().clear()

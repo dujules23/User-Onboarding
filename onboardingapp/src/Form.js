@@ -1,6 +1,7 @@
 //React import
 import React from 'react'
 
+//importing axios
 import axios from 'axios'
 
 
@@ -23,8 +24,12 @@ export default function Form (props) {
         
         setForm({...form, [name]: valueToUse})
         
+        
+        
         //
         setErrors(name, valueToUse)
+
+        
         
     }
    
@@ -48,6 +53,10 @@ export default function Form (props) {
             })
 
     }
+
+    
+
+    
 
 
     return(
